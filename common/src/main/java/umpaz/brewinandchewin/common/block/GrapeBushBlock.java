@@ -98,13 +98,13 @@ public class GrapeBushBlock extends CropBlock {
             super.growCrops(level, pos, state);
             return;
         }
-        if (level instanceof ServerLevel serverLevel && RopeGrapeBlock.canClimbInto(level, pos, this.colour))
+        if (level instanceof ServerLevel serverLevel && RopeGrapeBlock.canClimbInto(level, pos.above(), this.colour))
             RopeGrapeBlock.climb(serverLevel, pos, this.colour);
     }
 
     @Override
     public boolean isValidBonemealTarget(net.minecraft.world.level.LevelReader level, BlockPos pos, BlockState state) {
-        return state.getValue(AGE) < BUSH_MAX_AGE || RopeGrapeBlock.canClimbInto(level, pos, this.colour);
+        return state.getValue(AGE) < BUSH_MAX_AGE || RopeGrapeBlock.canClimbInto(level, pos.above(), this.colour);
     }
 
     public static Block of(GrapeColour colour) {
